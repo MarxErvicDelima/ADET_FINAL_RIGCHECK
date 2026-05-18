@@ -106,7 +106,7 @@ $global_products = [
         'brand_name' => 'Creative',
         'specs' => '{"Channels": "2.0", "Power": "32W RMS", "Frequency": "50Hz-20kHz", "Tech": "BasXPort"}',
         'image_url' => 'product-images/creative.jpeg',
-        'stock' => 7
+        'stock' => 8
     ],
     [
         'product_id' => 209,
