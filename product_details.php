@@ -32,6 +32,9 @@ if (!$product) {
     exit();
 }
 
+// Update product stock from database if available (same as in products.php)
+$product['stock'] = getProductStock($product['product_id'], $product['stock']);
+
 // Mock variants and reviews since we're hardcoding
 $variants = [
     ['variant_id' => $product_id, 'product_id' => $product_id, 'color_name' => 'Standard', 'stock' => $product['stock'], 'price_override' => null, 'sku' => 'SKU-' . $product_id]
@@ -325,8 +328,7 @@ $display_image = isset($productData[$product_id]['image']) ? $productData[$produ
                         <button onclick="decrementQty()" class="w-12 h-12 flex items-center justify-center text-gray-400 hover:text-primary transition-colors">
                             <i class="fas fa-minus"></i>
                         </button>
-                        <?php $current_stock = getProductStock($product_id, $product['stock']); ?>
-                        <input type="number" id="quantity" value="1" min="1" max="<?php echo $current_stock; ?>" class="w-16 text-center bg-transparent font-black text-gray-800 text-lg focus:outline-none">
+                        <input type="number" id="quantity" value="1" min="1" max="<?php echo $product['stock']; ?>" class="w-16 text-center bg-transparent font-black text-gray-800 text-lg focus:outline-none">
                         <button onclick="incrementQty()" class="w-12 h-12 flex items-center justify-center text-gray-400 hover:text-primary transition-colors">
                             <i class="fas fa-plus"></i>
                         </button>
